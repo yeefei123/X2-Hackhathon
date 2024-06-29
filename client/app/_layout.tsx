@@ -2,12 +2,13 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import TabTwoScreen from "./(explore)/explore";
 import Usertype from "./(home)/userTypeSelection";
 import ScannerScreen from "./(scanner)/scanner";
+import HistoryList from "./(seller)/history";
 import Seller from "./(seller)/seller";
 import HomeScreen from "./(tabs)";
 
@@ -46,11 +47,6 @@ export default function RootLayout() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="(home)"
-          component={Usertype}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
           name="(seller)/seller"
           component={Seller}
           options={{ headerShown: false }}
@@ -62,6 +58,20 @@ export default function RootLayout() {
             headerShown: true,
             headerBackTitle: "back",
             headerTitle: "QR Code Scanner",
+          }}
+        />
+        <Stack.Screen
+          name="(seller)/history"
+          component={HistoryList}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(home)/userTypeSelection"
+          component={Usertype}
+          options={{
+            headerShown: false,
           }}
         />
       </Stack.Navigator>

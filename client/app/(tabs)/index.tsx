@@ -13,13 +13,12 @@ export default function HomeScreen({
   };
 
   const handleBuyerLogin = () => {
-    navigation.navigate("(home)", { userType: "buyer" });
+    navigation.navigate("(home)/userTypeSelection", { userType: "buyer" });
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
-        {/* Your logo component or image */}
         <Text>Logo Goes Here</Text>
       </View>
       <View style={styles.buttonContainer}>

@@ -1,32 +1,17 @@
-import { Tabs } from "expo-router";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
+import UserTypeSelection from "../(home)/userTypeSelection";
+import HistoryList from "../(seller)/history";
 
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
-import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "@/hooks/useColorScheme";
+const Tab = createBottomTabNavigator();
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const HomeTabs = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        headerShown: false,
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Subsidies",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-            />
-          ),
-        }}
-      />
-    </Tabs>
+    <Tab.Navigator>
+      <Tab.Screen name="UserTypeSelection" component={UserTypeSelection} />
+      <Tab.Screen name="History" component={HistoryList} />
+    </Tab.Navigator>
   );
-}
+};
+
+export default HomeTabs;
