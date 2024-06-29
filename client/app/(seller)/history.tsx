@@ -36,6 +36,13 @@ export default function HistoryList() {
       productName: "Rice",
       credit: "15",
     },
+    {
+      id: 4,
+      code: "P004",
+      date: new Date().toLocaleString(),
+      productName: "Chicken",
+      credit: "5",
+    },
   ];
 
   const renderProductItem = ({ item }: { item: Product }) => (
