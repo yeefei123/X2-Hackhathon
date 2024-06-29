@@ -1,13 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
-import { useRouter } from "expo-router";
-import React from "react";
+import * as Speech from "expo-speech"; // Correct import statement for Speech
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Card } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Usertype() {
-  const router = useRouter();
   const navigation = useNavigation();
+
   const users = [
     {
       name: "Diesel",
@@ -24,38 +23,44 @@ export default function Usertype() {
   ];
 
   const _onPressOilsAndGas = () => {
-    router.replace("(tabs)/explore");
+    // Correct navigation method for navigating to a screen in the stack
+    navigation.navigate("(explore)/explore");
   };
 
   const _onPressGrocery = () => {
     console.log("Grocery card pressed");
   };
 
+  const speak = () => {
+    const thingToSay =
+      "Under Oils and gas category, you have 200 credits for diesel."; // Adjusted speech content for clarity
+    Speech.speak(thingToSay);
+  };
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <TouchableOpacity
-        onPress={() => navigation.navigate("(explore)/explore")}
+        onPress={_onPressOilsAndGas} // Corrected onPress handler
+        onLongPress={speak} // Corrected onLongPress handler to invoke the speak function
       >
         <View>
           <Card>
             <Card.Title>Oils and gas</Card.Title>
             <Card.Divider />
             <View>
-              {users.map((u, i) => {
-                return (
-                  <View key={i} style={styles.user}>
-                    <View style={styles.userInfo}>
-                      <Image
-                        style={styles.image}
-                        resizeMode="cover"
-                        source={{ uri: u.avatar }}
-                      />
-                      <Text style={styles.name}>{u.name}</Text>
-                    </View>
-                    <Text style={styles.credits}>200 credits</Text>
+              {users.map((u, i) => (
+                <View key={i} style={styles.user}>
+                  <View style={styles.userInfo}>
+                    <Image
+                      style={styles.image}
+                      resizeMode="cover"
+                      source={{ uri: u.avatar }}
+                    />
+                    <Text style={styles.name}>{u.name}</Text>
                   </View>
-                );
-              })}
+                  <Text style={styles.credits}>200 credits</Text>
+                </View>
+              ))}
             </View>
           </Card>
         </View>
@@ -67,21 +72,19 @@ export default function Usertype() {
             <Card.Title>Grocery</Card.Title>
             <Card.Divider />
             <View>
-              {grocery.map((u, i) => {
-                return (
-                  <View key={i} style={styles.user}>
-                    <View style={styles.userInfo}>
-                      <Image
-                        style={styles.image}
-                        resizeMode="cover"
-                        source={{ uri: u.avatar }}
-                      />
-                      <Text style={styles.name}>{u.name}</Text>
-                    </View>
-                    <Text style={styles.credits}>200 credits</Text>
+              {grocery.map((g, i) => (
+                <View key={i} style={styles.user}>
+                  <View style={styles.userInfo}>
+                    <Image
+                      style={styles.image}
+                      resizeMode="cover"
+                      source={{ uri: g.avatar }}
+                    />
+                    <Text style={styles.name}>{g.name}</Text>
                   </View>
-                );
-              })}
+                  <Text style={styles.credits}>200 credits</Text>
+                </View>
+              ))}
             </View>
           </Card>
         </View>
@@ -91,6 +94,10 @@ export default function Usertype() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
   user: {
     flexDirection: "row",
     alignItems: "center",
