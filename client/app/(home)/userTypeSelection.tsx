@@ -28,7 +28,7 @@ export default function Usertype() {
   };
 
   const _onPressGrocery = () => {
-    console.log("Grocery card pressed");
+    navigation.navigate("(python)/python");
   };
 
   const speak = () => {

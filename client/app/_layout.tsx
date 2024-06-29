@@ -8,6 +8,7 @@ import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import TabTwoScreen from "./(explore)/explore";
 import Usertype from "./(home)/userTypeSelection";
+import PythonAI from "./(python)/python";
 import ScannerScreen from "./(scanner)/scanner";
 import HistoryList from "./(seller)/history";
 import Seller from "./(seller)/seller";
@@ -72,6 +73,13 @@ export default function RootLayout() {
         <Stack.Screen
           name="(home)/userTypeSelection"
           component={Usertype}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(python)/python"
+          component={PythonAI}
           options={{
             headerShown: false,
           }}
