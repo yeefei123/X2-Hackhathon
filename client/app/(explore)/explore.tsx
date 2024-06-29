@@ -40,7 +40,6 @@ export default function TabTwoScreen() {
             uri: qrCodeUrl,
           }}
         />
-        <Text style={styles.text}>D 127 368</Text>
         <Text>Time left to redeem</Text>
         <Text style={styles.countdown}>{formatTime(countdown)}</Text>
       </View>

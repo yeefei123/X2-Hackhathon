@@ -1,4 +1,5 @@
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -12,6 +13,7 @@ import HistoryList from "./(seller)/history";
 import Seller from "./(seller)/seller";
 import HomeScreen from "./(tabs)";
 
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -48,7 +50,7 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="(seller)/seller"
-          component={Seller}
+          component={BottomTabs}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -76,5 +78,22 @@ export default function RootLayout() {
         />
       </Stack.Navigator>
     </SafeAreaProvider>
+  );
+}
+
+function BottomTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Product"
+        component={Seller}
+        options={{ title: "Seller", headerShown: false }}
+      />
+      <Tab.Screen
+        name="History"
+        component={HistoryList}
+        options={{ title: "History", headerShown: false }}
+      />
+    </Tab.Navigator>
   );
 }
