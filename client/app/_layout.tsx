@@ -87,7 +87,7 @@ function BottomTabs() {
       <Tab.Screen
         name="Product"
         component={Seller}
-        options={{ title: "Seller", headerShown: false }}
+        options={{ title: "Products", headerShown: true }}
       />
       <Tab.Screen
         name="History"

@@ -7265,6 +7265,11 @@ react-native-modal-datetime-picker@^17.1.0:
   dependencies:
     prop-types "^15.7.2"
 
+react-native-prevent-screenshots@^2.0.0-nightly.1:
+  version "2.0.0-nightly.1"
+  resolved "https://registry.npmjs.org/react-native-prevent-screenshots/-/react-native-prevent-screenshots-2.0.0-nightly.1.tgz"
+  integrity sha512-RRAuu65BmpsRJVjNbE96IBhWIEIuioCWxsu9HFD7qJ2TDRypxxKUHgt5DXwEQquR2poWluk3eVoZmMVK522v2g==
+
 react-native-ratings@8.0.4:
   version "8.0.4"
   resolved "https://registry.npmjs.org/react-native-ratings/-/react-native-ratings-8.0.4.tgz"
@@ -7298,6 +7303,11 @@ react-native-screens@*, "react-native-screens@>= 3.0.0", react-native-screens@3.
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-screenshot-prevent@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/react-native-screenshot-prevent/-/react-native-screenshot-prevent-1.2.1.tgz"
+  integrity sha512-zY6U3xNlFrquCJJVNoyR6DcAv2c6tOHQIcleBUQo4OrbSKz5a94Y3MkuzVwpE+IMlxCASymenDwfMtnWopSiVA==
 
 react-native-size-matters@^0.3.1:
   version "0.3.1"

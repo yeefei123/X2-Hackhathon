@@ -1,11 +1,11 @@
 import { CameraType, CameraView, useCameraPermissions } from "expo-camera";
+import { useNavigation } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
   Button,
   Modal,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -17,7 +17,7 @@ export default function ScannerScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [amtModalVisible, setAmtModalVisible] = useState(false);
   const [scannedData, setScannedData] = useState("");
-  const [amount, setAmount] = useState("");
+  const navigation = useNavigation();
 
   useEffect(() => {
     if (!permission || !permission.granted) {
@@ -36,9 +36,8 @@ export default function ScannerScreen() {
   };
 
   const handleAmountConfirm = () => {
-    // Handle amount confirmation logic here
-    console.log("Amount confirmed:", amount);
     setAmtModalVisible(false);
+    navigation.navigate("(seller)/history", { newScannedData: scannedData });
   };
 
   if (!permission) {
@@ -70,9 +69,9 @@ export default function ScannerScreen() {
       <CameraView
         style={styles.camera}
         facing={facing}
-        onBarCodeScanned={handleCodeScanned}
-        barCodeScannerSettings={{
-          barCodeTypes: ["qr"],
+        onBarcodeScanned={handleCodeScanned}
+        barcodeScannerSettings={{
+          barcodeTypes: ["qr"],
         }}
       />
       <Modal
@@ -83,8 +82,9 @@ export default function ScannerScreen() {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContainer}>
-            <Text style={styles.modalTitle}>Scanned Data:</Text>
-            <Text>{scannedData}</Text>
+            <Text style={styles.modalTitle}>
+              List of subsidiaries claimed: {"\n"} 1. Cooking Oils (20 credits)
+            </Text>
             <View style={styles.modalButtons}>
               <TouchableOpacity
                 style={styles.modalButton}
@@ -96,7 +96,7 @@ export default function ScannerScreen() {
                 style={styles.modalButton}
                 onPress={handleAddPress}
               >
-                <Text style={styles.modalButtonText}>Add</Text>
+                <Text style={styles.modalButtonText}>Confirm</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -111,14 +111,7 @@ export default function ScannerScreen() {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContainer}>
-            <Text style={styles.modalTitle}>Enter Amount to Transfer</Text>
-            <TextInput
-              style={styles.modalInput}
-              keyboardType="numeric"
-              placeholder="Amount"
-              value={amount}
-              onChangeText={setAmount}
-            />
+            <Text style={styles.modalTitle}>Confirmation successfully!</Text>
             <View style={styles.modalButtons}>
               <TouchableOpacity
                 style={styles.modalButton}

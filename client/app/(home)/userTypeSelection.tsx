@@ -61,7 +61,7 @@ export default function Usertype() {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={_onPressGrocery} underlayColor="white">
+      <TouchableOpacity onPress={_onPressGrocery}>
         <View>
           <Card>
             <Card.Title>Grocery</Card.Title>

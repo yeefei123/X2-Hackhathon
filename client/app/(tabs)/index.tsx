@@ -1,6 +1,6 @@
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen({
@@ -19,7 +19,11 @@ export default function HomeScreen({
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
-        <Text>Logo Goes Here</Text>
+        <Image
+          style={styles.image}
+          source={require("../../assets/images/logo.png")}
+          resizeMode="contain"
+        />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={handleSellerLogin}>
@@ -38,9 +42,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#FFF",
   },
   logoContainer: {
-    flex: 1,
+    flex: 2,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -56,24 +61,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     borderRadius: 10,
     marginBottom: 20,
+    width: "100%",
+    alignItems: "center",
   },
   buttonText: {
     color: "#FFF",
     fontSize: 18,
     fontWeight: "bold",
   },
-  scannerButton: {
-    position: "absolute",
-    bottom: 20,
-    right: 20,
-    backgroundColor: "#1E90FF",
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 10,
-  },
-  scannerButtonText: {
-    color: "#FFF",
-    fontSize: 16,
-    fontWeight: "bold",
+  image: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
   },
 });

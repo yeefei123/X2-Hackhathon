@@ -71,7 +71,7 @@ export default function HistoryList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F8F9FA",
+    backgroundColor: "white",
     padding: 20,
   },
   header: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   productItem: {
-    backgroundColor: "#FFF",
+    backgroundColor: "black",
     borderRadius: 10,
     padding: 15,
     marginVertical: 8,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   productName: {
     fontSize: 18,
     fontWeight: "600",
-    color: "#333",
+    color: "white",
   },
   productDate: {
     fontSize: 14,
